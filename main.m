@@ -1,9 +1,6 @@
 //
-//  MiddleClick
+//  CmdClick
 //  main.m
-//
-//  Created by Clem on 21.06.09.
-//
 
 
 #import "Controller.h"

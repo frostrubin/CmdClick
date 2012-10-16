@@ -1,19 +1,14 @@
 //
+//  CmdClick
 //  Controller.m
-//  MiddleClick
-//
-//  Created by Alex Galonsky on 11/9/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
-//
+
 
 #import "Controller.h"
 #import <Cocoa/Cocoa.h>
-#import "TrayMenu.h"
 #include <math.h>
 #include <unistd.h>
 #include <CoreFoundation/CoreFoundation.h>
 #import <Foundation/Foundation.h> 
-#import "WakeObserver.h"
 
 /***************************************************************************
  *
@@ -76,15 +71,7 @@ BOOL pressed;
         MTRegisterContactFrameCallback((MTDeviceRef)[deviceList objectAtIndex:i], callback); //assign callback for device
         MTDeviceStart((MTDeviceRef)[deviceList objectAtIndex:i],0); //start sending events
 	}
-	
-	//register a callback to know when osx come back from sleep
-	WakeObserver *wo = [[WakeObserver alloc] init];
-	[[[NSWorkspace sharedWorkspace] notificationCenter] addObserver: wo selector: @selector(receiveWakeNote:) name: NSWorkspaceDidWakeNotification object: NULL];
-	
-	
-	//add traymenu
-    TrayMenu *menu = [[TrayMenu alloc] initWithController:self];
-    [NSApp setDelegate:menu];
+
     [NSApp run];
 	
 	[pool release];
